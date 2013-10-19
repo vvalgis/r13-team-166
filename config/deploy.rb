@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'capistrano-unicorn'
 
 set :rvm_require_role, :rvm
 set :rvm_ruby_string, :ruby2
