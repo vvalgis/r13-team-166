@@ -48,3 +48,8 @@ end
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+
+gem 'simple_form'
+gem 'compass-rails'
+gem 'zurb-foundation', '~> 4.0.0'
+gem 'devise'
