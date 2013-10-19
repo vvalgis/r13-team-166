@@ -1,5 +1,5 @@
 class ProjectController < ApplicationController
   def index
-    @projects = Project.all #:conditions => { :owner_id => current_user.id }
+    @projects = Project.all #if user_signed_in?
   end
 end

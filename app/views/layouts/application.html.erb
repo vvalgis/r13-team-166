@@ -21,7 +21,21 @@
   </head>
 
   <body>
-
+    <div class="contatin-to-grid sticky">
+      <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name"><h1><a href="#">Scriba.md</a></h1></li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="right">
+            <li class="divider"></li>
+            <li><%= link_to "Projects", projects_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Docs", "#" %></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
     <%= yield %>
 
     
