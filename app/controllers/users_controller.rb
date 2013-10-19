@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
   def tryout
-
+    create_guest_user unless current_user
+    redirect_to root_path
   end
 
   def create
-    #@user = params[:user] ? User.new(params[:user]) : User.new_quest
-#    if @user.save
-#      session[:user_id] = @user.id
-#      redirect_to root_url
-#    else
-#      redirect_to new_user_registration_path
-#    end
+  end
+
+  private
+
+  def create_guest_user
+    user = User.create(:email => "guest##{Time.now.to_i}#{rand(99)}@example.com", :guest => true)
+    user.save :validate => false 
+    sign_in(user)
   end
 end
