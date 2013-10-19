@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 
 # Set your full path to application.
-app_path = File.expand_path('../', __dir__)
+app_path = '/home/deployer/scirba/current'
 
 # Set unicorn options
 worker_processes 4
