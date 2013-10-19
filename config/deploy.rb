@@ -23,8 +23,16 @@ ssh_options[:forward_agent] = true
 
 server "173.255.212.52", :app, :web, :db, :rvm, :primary => true
 
+before "deploy:finalize_update", "scriba:symlink"
 after 'deploy:restart', 'unicorn:duplicate'
 
+
+namespace :scriba do
+  desc "Make symlink for additional files"
+  task :symlink do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+end
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 # role :web, "your web-server here"                          # Your HTTP server, Apache/etc
