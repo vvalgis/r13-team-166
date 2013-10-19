@@ -41,12 +41,15 @@
                 </ul>
               </li>
             <% else %>
-              <li class="has-dropdown not-click">
-                <%= link_to "Try out", "#" %>
+              <li class="has-dropdown not-click has-form">
+                <%= button_to "Try out", users_path, :method => :post, :class => "button" %>
+              </li>
+              <li>
+                <li class="has-dropdown"><%= link_to "Sign in", new_user_session_path %>
                 <ul class="dropdown">
-                  <li><%= link_to "Sign in", new_user_session_path %></li>
                   <li><%= link_to "Sign up", new_user_registration_path %></li>  
                 </ul>
+                </li>
               </li>
             <% end %>
             </li>
