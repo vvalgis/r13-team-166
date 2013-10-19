@@ -19,6 +19,7 @@ set :use_sudo,    false
 set :user,        "deployer"
 
 default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
 
 server "173.255.212.52", :app, :web, :db, :rvm, :primary => true
 
