@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019124509) do
+ActiveRecord::Schema.define(version: 20131019182045) do
+
+  create_table "documents", force: true do |t|
+    t.integer  "project_id"
+    t.string   "comment"
+    t.string   "lang"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "documents", ["project_id"], name: "index_documents_on_project_id", using: :btree
+
+  create_table "editions", id: false, force: true do |t|
+    t.integer "document_id"
+    t.integer "parent_id"
+  end
+
+  add_index "editions", ["document_id", "parent_id"], name: "index_editions_on_document_id_and_parent_id", unique: true, using: :btree
 
   create_table "projects", force: true do |t|
     t.integer  "user_id"
@@ -35,7 +52,6 @@ ActiveRecord::Schema.define(version: 20131019124509) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "guest"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

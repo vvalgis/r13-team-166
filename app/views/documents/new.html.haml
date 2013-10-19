@@ -1,0 +1,14 @@
+%h1 Add new document
+%p
+  for project:
+  %strong= @project.name
+
+= simple_form_for([@project, @document]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :comment
+    = f.input :lang
+
+  .form-actions
+    = f.button :submit

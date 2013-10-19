@@ -8,7 +8,10 @@ Scriba::Application.routes.draw do
   root "projects#index"
   resources :users
   get "/tryout" => "users#tryout", as: :tryout
-  resources :projects
+  resources :documents
+  resources :projects do
+    resources :documents
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

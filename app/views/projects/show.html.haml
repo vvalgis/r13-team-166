@@ -1,0 +1,20 @@
+%p#notice= notice 
+
+%h1
+  = @project.name
+  %small
+    Base language:
+    = @project.lang
+%p= @project.description
+
+%p= link_to 'Add document to project', new_project_document_path(@project)
+
+%ul
+  - @project.documents.each do |project|
+    %li
+      = project.comment
+      = link_to 'Show'
+      = link_to 'Edit'
+
+-#= link_to 'Edit', edit_project_path(@project)
+= link_to 'Back', projects_path

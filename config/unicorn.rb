@@ -3,13 +3,13 @@
 # ------------------------------------------------------------------------------
 
 # Set your full path to application.
-app_path = File.expand_path('../', __dir__)
+app_path = '/home/deployer/scriba/current'
 
 # Set unicorn options
 worker_processes 4
 preload_app true
 timeout 180
-listen "127.0.0.1:9000"
+listen "/tmp/.scriba-unicorn.sock", :backlog => 64
 
 # Spawn unicorn master worker for user apps (group: apps)
 user 'deployer', 'deployer' 
