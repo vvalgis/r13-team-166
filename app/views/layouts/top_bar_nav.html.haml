@@ -9,14 +9,12 @@
         %li.divider
         %li= link_to "Projects", projects_path
         %li.divider
-        %li= link_to "Docs", "#"
-        %li.divider
         - if user_signed_in?
-          %li.has-dropdown.not-click
+          %li
             %a{href: "#"}
               Logged in as #{current_user.email}
-            %ul.dropdown
-              %li= link_to "Sign out", destroy_user_session_path, method: :delete
+            -#%ul.dropdown
+            -#  %li= link_to "Sign out", destroy_user_session_path, method: :delete
         - else
           %li.not-click.has-form
             = link_to "Try out", '/tryout', :class => "button"
