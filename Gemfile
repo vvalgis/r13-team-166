@@ -54,3 +54,4 @@ gem 'compass-rails', "~> 2.0.alpha.0"
 gem 'zurb-foundation', '~> 4.0.0'
 gem 'devise'
 gem 'haml-rails'
+gem 'redcarpet'
