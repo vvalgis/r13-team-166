@@ -1,0 +1,13 @@
+%h1= @project.name
+%p
+  Base language: 
+  = @project.lang
+%p
+  Translate language:
+  = @document.lang
+
+.text
+  = @document.html
+
+%p
+  = link_to 'Back', @project

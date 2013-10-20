@@ -10,11 +10,11 @@
 %p= link_to 'Add document to project', new_project_document_path(@project)
 
 %ul
-  - @project.documents.each do |project|
+  - @project.documents.each do |doc|
     %li
-      = project.comment
-      = link_to 'Show'
-      = link_to 'Edit'
+      = doc.comment
+      = link_to 'Show', project_document_path(@project, doc)
+      = link_to 'Edit', edit_project_document_path(@project, doc)
 
 -#= link_to 'Edit', edit_project_path(@project)
 = link_to 'Back', projects_path

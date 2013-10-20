@@ -16,10 +16,14 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def show
+    @document = @project.documents.find(params[:id])
+  end
+
   private 
 
   def set_project
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
   end
 
   def document_params

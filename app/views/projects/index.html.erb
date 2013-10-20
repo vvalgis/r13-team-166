@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Name</th>
       <th>Description</th>
       <th>Lang</th>
@@ -16,7 +15,6 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.user_id %></td>
         <td><%= project.name %></td>
         <td><%= project.description %></td>
         <td><%= project.lang %></td>
