@@ -19,4 +19,6 @@
   %body
     = render(template: 'layouts/top_bar_nav') unless local_assigns[:no_tab_bar]
     = content_for?(:content) ? yield(:content) : yield
-    = javascript_include_tag "application"
+    :javascript
+        var rumbleBannerPlacement = 'bottom'
+    = javascript_include_tag "http://s0.railsrumble.com/banner.js"
