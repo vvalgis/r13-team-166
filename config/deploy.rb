@@ -32,6 +32,7 @@ namespace :scriba do
   desc "Make symlink for additional files"
   task :symlink do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/repo #{release_path}/db/repo"
   end
 end
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
