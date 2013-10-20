@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def tryout
     create_guest_user unless current_user
-    redirect_to root_path
+    redirect_to projects_path
   end
 
   def create
