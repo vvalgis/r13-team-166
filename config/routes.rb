@@ -11,7 +11,12 @@ Scriba::Application.routes.draw do
   get "/tryout" => "users#tryout", as: :tryout
   resources :documents
   resources :projects do
-    resources :documents
+    resources :documents do
+      resources :blocks, only: :update
+      member do
+        get :translate
+      end
+    end
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,20 @@
+- content_for(:blocks) do
+  %h1= @project.name
+  %p
+    Base language: 
+    = @original.lang
+  %p
+    Translate language:
+    = @document.lang
+
+  %table
+    %tbody
+      - @document.text.blocks.each do |block|
+        - original_block = @original.text.get_block(block.id)
+        %tr
+          %td{width: '50%'}= original_block ? original_block.to_html : ''
+          %td.block_form= render block
+
+
+  %p
+    = link_to 'Back', @project

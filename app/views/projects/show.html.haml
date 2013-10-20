@@ -7,14 +7,17 @@
     = @project.lang
 %p= @project.description
 
-%p= link_to 'Add document to project', new_project_document_path(@project)
-
 %ul
   - @project.documents.each do |doc|
     %li
       = doc.comment
       = link_to 'Show', project_document_path(@project, doc)
-      = link_to 'Edit', edit_project_document_path(@project, doc)
+      -#= link_to 'Edit', edit_project_document_path(@project, doc)
+      - if doc.is_original?
+        = link_to 'Create edition', new_project_document_path(@project, parent_id: doc.id)
+      - else
+        = link_to 'Translate', translate_project_document_path(@project, doc)
+
 
 -#= link_to 'Edit', edit_project_path(@project)
 = link_to 'Back', projects_path

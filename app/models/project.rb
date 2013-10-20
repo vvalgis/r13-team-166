@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   attr_accessor :text
 
   def original
-    documents.joins(:original).where(editions: {parent_id: nil}).first
+    documents.joins(:self_edition).where(self_edition: {parent_id: nil}).first
   end
 
   after_create do

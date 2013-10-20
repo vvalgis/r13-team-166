@@ -1,0 +1,31 @@
+- content_for(:blocks) do
+  %h1= @project.name
+  %p
+    Base language: 
+    = @project.lang
+  %p
+    Translate language:
+    = @document.lang
+
+  %table
+    %tbody
+      - @document.text.blocks.each do |block|
+        %tr
+          %td{width: '70%'}= block.to_html
+          %td
+            = link_to 'append to upper block', '#', class: 'tiny button'
+            = link_to 'add empty block before', '#', class: 'tiny button'
+            %br
+            = link_to 'H1', '#', class: 'tiny button'
+            = link_to 'H2', '#', class: 'tiny button'
+            = link_to 'H3', '#', class: 'tiny button'
+            = link_to 'H4', '#', class: 'tiny button'
+            %br
+            
+            %br
+            = link_to 'add empty block after', '#', class: 'tiny button
+            = link_to 'prepend with bottom block', '#', class: 'tiny button'
+
+
+  %p
+    = link_to 'Back', @project

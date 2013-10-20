@@ -9,6 +9,7 @@
   .form-inputs
     = f.input :comment
     = f.input :lang
+    = f.input :parent_id, as: :hidden, value: @parent_id
 
   .form-actions
     = f.button :submit

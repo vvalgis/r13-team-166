@@ -1,0 +1,5 @@
+- content_for :content do
+  .row
+    .large-12.columns
+      = content_for?(:blocks) ? yield(:blocks) : yield
+= render template: 'layouts/base'

@@ -5,8 +5,8 @@ module Scriba
     def initialize(text, filename)
       @filename = filename
       @blocks = []
-      text.gsub("\r", '').split("\n").each do |block_text|
-        @blocks << Scriba::Block.new(block_text)
+      text.gsub("\r", '').split("\n\n").each_with_index do |block_text, i|
+        @blocks << Scriba::Block.new(block_text, i)
       end
     end
 
@@ -14,6 +14,14 @@ module Scriba
       path = File.join(Scriba.repo_path, filename)
       raise Scriba::FileNotFound unless File.exists?(path)
       self.new(File.read(path), filename)
+    end
+
+    def update_block(id, text)
+      @blocks[id.to_i] = text.gsub("\n\n", "\n")
+    end
+
+    def get_block(id)
+      @blocks[id.to_i]
     end
 
     def save
@@ -24,7 +32,7 @@ module Scriba
     end
 
     def to_s
-      @blocks.join("\n")
+      @blocks.join("\n\n")
     end
 
   end
