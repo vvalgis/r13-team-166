@@ -1,13 +1,13 @@
 %h1= @project.name
-%p
-  Base language: 
-  = @project.lang
-%p
-  Translate language:
-  = @document.lang
+%h1
+  %small Base language: 
+  %small= @project.lang
+%h1{ :style => "margin-top: -20px;"}
+  %small Translate language:
+  %small= @document.lang
 
 .text
   = @document.to_html
 
 %p
-  = link_to 'Back', @project
+  = link_to 'Back', @project, :class => "button"

@@ -5,19 +5,23 @@
   %small
     Base language:
     = @project.lang
-%p= @project.description
+%h1
+  %small= @project.description
+%div{:style => "clear:both;"}
 
-%ul
-  - @project.documents.each do |doc|
-    %li
-      = doc.comment
-      = link_to 'Show', project_document_path(@project, doc)
-      -#= link_to 'Edit', edit_project_document_path(@project, doc)
-      - if doc.is_original?
-        = link_to 'Create edition', new_project_document_path(@project, parent_id: doc.id)
-      - else
-        = link_to 'Translate', translate_project_document_path(@project, doc)
-
+- @project.documents.each do |doc|
+  %header
+    %h3= doc.comment
+    %hgroup
+      %section
+        = link_to 'Show', project_document_path(@project, doc), :class => "button"
+        -#= link_to 'Edit', edit_project_document_path(@project, doc)
+      %section
+        - if doc.is_original?
+          = link_to 'Create edition', new_project_document_path(@project, parent_id: doc.id), :class => "button"
+        - else
+          = link_to 'Translate', translate_project_document_path(@project, doc), :class => "button"
+      %div{:style => "clear:both;"}
 
 -#= link_to 'Edit', edit_project_path(@project)
-= link_to 'Back', projects_path
+= link_to 'Back', projects_path, :class => "button"
